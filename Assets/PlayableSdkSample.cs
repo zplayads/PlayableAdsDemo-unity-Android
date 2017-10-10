@@ -8,6 +8,7 @@ public class PlayableSdkSample : MonoBehaviour, PlayableAdsHelper.IPlayableAdLis
 	// Use this for initialization
 	void Start () {
         mTextMesh = GetComponent<TextMesh>();
+		// 将androidUnityAppid／androidUnityAdUnitId替换为通过审核的appId和广告位Id
 		mPlayableAdsHelper = PlayableAdsHelper.Init ("androidUnityAppid", "androidUnityAdUnitId", gameObject.name);
 		mPlayableAdsHelper.InitPlayableAds();
     }
@@ -15,12 +16,15 @@ public class PlayableSdkSample : MonoBehaviour, PlayableAdsHelper.IPlayableAdLis
     public void RequestPlayableAd()
     {
         mTextMesh.text = "request ad";
+		// 调用该方法请求广告
+		// 每次请求的广告只能展示一次，展示完后该广告会过期。再次调用该方法会请求新的广告。
 		mPlayableAdsHelper.RequestAd();
     }
 
     public void PrensetPlayableAd()
     {
         mTextMesh.text = "present";
+		// 调用该方法展示广告
 		mPlayableAdsHelper.PresentAd ();
     }
 		
